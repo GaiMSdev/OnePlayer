@@ -1,7 +1,6 @@
 app_identifier "GaiMS.OnePlayer"
-price_tier 1
-primary_category "utilities"
-primary_first_sub_category "developer_tools"
+# price_tier er utdatert — sett pris manuelt i App Store Connect
+primary_category "UTILITIES"
 
 # Skjermbilder hentes fra fastlane/screenshots/en-US/
 # Legg .png-filer der med riktig navngiving:

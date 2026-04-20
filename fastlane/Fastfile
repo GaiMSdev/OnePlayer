@@ -13,6 +13,20 @@ API_KEY = app_store_connect_api_key(
 platform :mac do
 
   # -------------------------------------------------------
+  # create_app — opprett app-oppføring i App Store Connect.
+  # Kjøres én gang. Idempotent: feiler ikke hvis appen allerede finnes.
+  # -------------------------------------------------------
+  lane :create_app do
+    produce(
+      app_identifier: "GaiMS.OnePlayer",
+      app_name:       "OnePlayer",
+      platform:       "osx",
+      language:       "English",
+      skip_devcenter: false
+    )
+  end
+
+  # -------------------------------------------------------
   # release — bygg, arkiver, last opp bygg + metadata + bilder
   # Bruk denne når du har en ny versjon klar til innsending.
   # -------------------------------------------------------
@@ -52,7 +66,25 @@ platform :mac do
       automatic_release:    false,
       force:                true,
       platform:             "osx",
-      precheck_include_in_app_purchases: false
+      precheck_include_in_app_purchases: false,
+      submission_information: {
+        add_id_info_uses_idfa:                   false,
+        add_id_info_serves_ads:                  false,
+        add_id_info_tracks_install:              false,
+        add_id_info_tracks_action:               false,
+        add_id_info_limits_tracking:             false,
+        export_compliance_platform:              "ios",
+        export_compliance_compliance_required:   false,
+        export_compliance_encryption_updated:    false,
+        export_compliance_app_type:              nil,
+        export_compliance_uses_encryption:       false,
+        export_compliance_is_exempt:             false,
+        export_compliance_contains_third_party_cryptography: false,
+        export_compliance_contains_proprietary_cryptography: false,
+        export_compliance_available_on_french_store: false,
+        content_rights_contains_third_party_content: false,
+        content_rights_has_rights:               false
+      }
     )
   end
 
