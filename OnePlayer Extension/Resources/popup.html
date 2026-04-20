@@ -1,11 +1,227 @@
 <!DOCTYPE html>
-<html>
+<html lang="no">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="popup.css">
-    <script type="module" src="popup.js"></script>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --window-bg: #f4f4f7;
+            --panel-bg: rgba(255, 255, 255, 0.78);
+            --panel-border: rgba(60, 60, 67, 0.12);
+            --text-primary: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --accent: #0071e3;
+            --accent-pressed: #0062c6;
+            --track-off: rgba(120, 120, 128, 0.16);
+            --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+            --card-bg: rgba(255, 255, 255, 0.72);
+            --card-border: rgba(60, 60, 67, 0.08);
+            --knob-bg: white;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --window-bg: #1c1c1e;
+                --panel-bg: rgba(44, 44, 46, 0.82);
+                --panel-border: rgba(255, 255, 255, 0.08);
+                --text-primary: #f5f5f7;
+                --text-secondary: #98989d;
+                --accent: #0a84ff;
+                --accent-pressed: #409cff;
+                --track-off: rgba(120, 120, 128, 0.32);
+                --shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+                --card-bg: rgba(58, 58, 60, 0.6);
+                --card-border: rgba(255, 255, 255, 0.06);
+                --knob-bg: #e5e5e5;
+            }
+        }
+        * {
+            box-sizing: border-box;
+            -webkit-user-select: none;
+        }
+        html, body {
+            width: 340px;
+            margin: 0;
+            padding: 0;
+            background: var(--window-bg);
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            overflow: hidden;
+        }
+        .container {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .chrome {
+            border-radius: 20px;
+            padding: 14px;
+            background: var(--panel-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--panel-border);
+            box-shadow: var(--shadow);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(242, 242, 247, 0.98));
+            border: 1px solid rgba(60, 60, 67, 0.12);
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+        }
+        .logo img {
+            width: 24px;
+            height: 24px;
+        }
+        .title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        h1 {
+            font-size: 18px;
+            margin: 0;
+            font-weight: 650;
+            letter-spacing: -0.02em;
+        }
+        .subtitle {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+        }
+        .label-group {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            max-width: 220px;
+        }
+        .label-main {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .label-sub {
+            font-size: 12px;
+            line-height: 1.35;
+            color: var(--text-secondary);
+        }
+
+        .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; cursor: pointer; inset: 0;
+            background-color: var(--track-off);
+            transition: .2s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px;
+            background-color: var(--knob-bg); transition: .2s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 50%; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+        }
+        input:checked + .slider { background-color: var(--accent); }
+        input:checked + .slider:before { transform: translateX(20px); }
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 2px;
+        }
+        button {
+            width: 100%;
+            background: linear-gradient(180deg, #0a84ff, var(--accent));
+            border: none;
+            color: white;
+            padding: 12px 14px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 8px 18px rgba(0, 113, 227, 0.22);
+        }
+        button:hover { background: linear-gradient(180deg, #3097ff, var(--accent)); }
+        button:active {
+            background: var(--accent-pressed);
+            transform: scale(0.985);
+        }
+        button:disabled {
+            opacity: 0.4;
+            cursor: default;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
-    <strong>Hello World!</strong>
+    <div class="container">
+        <div class="chrome">
+            <div class="header">
+                <div class="logo">
+                    <img src="images/icon-64.png" alt="OnePlayer">
+                </div>
+                <div class="title-group">
+                    <h1>OnePlayer</h1>
+                    <div class="subtitle">Video controls for Safari</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="label-group">
+                    <span class="label-main">Auto-Pause</span>
+                    <span class="label-sub">Pause other YouTube videos when a new one starts playing.</span>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="pauseToggle" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="card">
+                <div class="label-group">
+                    <span class="label-main">Sticky Picture in Picture</span>
+                    <span class="label-sub">Keep the current video visible when you scroll away from the player.</span>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="pipToggle" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="card">
+                <div class="label-group">
+                    <span class="label-main">PiP Button on Player</span>
+                    <span class="label-sub">Show a button on the video player to manually enter Picture in Picture.</span>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="pipButtonToggle" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="actions">
+                <button id="refreshBtn">Refresh YouTube Tabs</button>
+            </div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
 </body>
 </html>

@@ -40,6 +40,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E184116F2F8B0B5B00AD9743 /* Exceptions for "OnePlayer" folder in "OnePlayer" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E3DC43132F8341640078C49D /* OnePlayer */;
+		};
 		E3DC43472F8341660078C49D /* Exceptions for "OnePlayer Extension" folder in "OnePlayer Extension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -47,21 +54,31 @@
 			);
 			target = E3DC432D2F8341660078C49D /* OnePlayer Extension */;
 		};
+		E3DC43522F8346D50078C49D /* Exceptions for "OnePlayer Extension" folder in "OnePlayer" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resources/popup.html,
+			);
+			target = E3DC43132F8341640078C49D /* OnePlayer */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E3DC43162F8341640078C49D /* OnePlayer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E184116F2F8B0B5B00AD9743 /* Exceptions for "OnePlayer" folder in "OnePlayer" target */,
+			);
 			path = OnePlayer;
 			sourceTree = "<group>";
 		};
 		E3DC43322F8341660078C49D /* OnePlayer Extension */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				E3DC43522F8346D50078C49D /* Exceptions for "OnePlayer Extension" folder in "OnePlayer" target */,
 				E3DC43472F8341660078C49D /* Exceptions for "OnePlayer Extension" folder in "OnePlayer Extension" target */,
 			);
 			explicitFolders = (
-				Resources/_locales,
 				Resources/images,
 			);
 			path = "OnePlayer Extension";
@@ -439,7 +456,9 @@
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OnePlayer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OnePlayer;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -480,7 +499,9 @@
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OnePlayer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OnePlayer;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;

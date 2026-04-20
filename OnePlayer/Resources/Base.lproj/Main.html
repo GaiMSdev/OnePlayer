@@ -1,19 +1,248 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnePlayer Setup</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --bg-top: #fbfbfd;
+            --bg-bottom: #ececf1;
+            --panel: rgba(255, 255, 255, 0.8);
+            --panel-border: rgba(60, 60, 67, 0.12);
+            --accent: #0071e3;
+            --text: #1d1d1f;
+            --text-dim: #6e6e73;
+            --shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+            --steps-bg: rgba(255, 255, 255, 0.72);
+            --steps-border: rgba(60, 60, 67, 0.08);
+            --btn-secondary-bg: rgba(120, 120, 128, 0.12);
+            --btn-secondary-hover: rgba(120, 120, 128, 0.18);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-top: #1c1c1e;
+                --bg-bottom: #1c1c1e;
+                --panel: rgba(44, 44, 46, 0.82);
+                --panel-border: rgba(255, 255, 255, 0.08);
+                --accent: #0a84ff;
+                --text: #f5f5f7;
+                --text-dim: #98989d;
+                --shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+                --steps-bg: rgba(58, 58, 60, 0.6);
+                --steps-border: rgba(255, 255, 255, 0.06);
+                --btn-secondary-bg: rgba(120, 120, 128, 0.24);
+                --btn-secondary-hover: rgba(120, 120, 128, 0.32);
+            }
+        }
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        * {
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="../Style.css">
-    <script src="../Script.js" defer></script>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 36px 36px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--text);
+            background: var(--bg-top);
+        }
+
+        .icon-container {
+            width: 92px;
+            height: 92px;
+            margin-bottom: 20px;
+            background: var(--panel);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--panel-border);
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+        }
+
+        .icon-container svg {
+            width: 62px;
+            height: 62px;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+        }
+
+        .subtitle {
+            max-width: 420px;
+            margin: 0 0 28px;
+            font-size: 16px;
+            line-height: 1.45;
+            color: var(--text-dim);
+        }
+
+        .steps {
+            width: 100%;
+            max-width: 460px;
+            text-align: left;
+            background: var(--steps-bg);
+            padding: 22px;
+            border-radius: 22px;
+            border: 1px solid var(--steps-border);
+            box-shadow: 0 14px 32px rgba(15, 23, 42, 0.05);
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 18px;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+        }
+
+        .number {
+            width: 28px;
+            height: 28px;
+            margin-right: 14px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 8px 18px rgba(0, 113, 227, 0.2);
+        }
+
+        .content b {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .content span {
+            color: var(--text-dim);
+            font-size: 14px;
+            line-height: 1.45;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 999px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(180deg, #0a84ff, var(--accent));
+            color: white;
+            box-shadow: 0 10px 24px rgba(0, 113, 227, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--btn-secondary-bg);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            background: var(--btn-secondary-hover);
+        }
+
+        .footer {
+            margin-top: 22px;
+            font-size: 13px;
+            line-height: 1.4;
+            color: var(--text-dim);
+        }
+
+    </style>
 </head>
 <body>
-    <img src="../Icon.png" width="128" height="128" alt="OnePlayer Icon">
-    <p class="state-unknown">You can turn on OnePlayer’s extension in Safari Extensions preferences.</p>
-    <p class="state-on">OnePlayer’s extension is currently on. You can turn it off in Safari Extensions preferences.</p>
-    <p class="state-off">OnePlayer’s extension is currently off. You can turn it on in Safari Extensions preferences.</p>
-    <button class="open-preferences">Quit and Open Safari Extensions Preferences…</button>
+            <div class="icon-container">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#0a84ff" />
+                            <stop offset="100%" stop-color="#0057d6" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="512" height="512" rx="115" fill="url(#bgGradient)" />
+                    <path d="M195 160 L370 256 L195 352 Z" fill="#ffffff" />
+                </svg>
+            </div>
+
+            <h1>OnePlayer</h1>
+            <p class="subtitle">Turn on the Safari extension, allow access to YouTube, and manage playback from the toolbar.</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="number">1</div>
+                    <div class="content">
+                        <b>Open Safari Settings</b>
+                        <span>Use the button below or press Command-comma in Safari.</span>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="number">2</div>
+                    <div class="content">
+                        <b>Enable OnePlayer</b>
+                        <span>Open the Extensions pane and turn on OnePlayer for Safari.</span>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="number">3</div>
+                    <div class="content">
+                        <b>Allow YouTube Access</b>
+                        <span>Choose “Always Allow on Every Website” for the smoothest playback control.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-primary" onclick="openPreferences()">Open Safari Settings</button>
+                <button class="btn btn-secondary" onclick="closeApp()">Done</button>
+            </div>
+
+            <div class="footer">
+                Auto-Pause and Picture in Picture settings are available from the Safari toolbar after activation.
+            </div>
+
+    <script>
+        function openPreferences() {
+            if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.appBridge) {
+                window.webkit.messageHandlers.appBridge.postMessage("openPreferences");
+            }
+        }
+
+        function closeApp() {
+            if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.appBridge) {
+                window.webkit.messageHandlers.appBridge.postMessage("closeApp");
+            } else {
+                window.close();
+            }
+        }
+    </script>
 </body>
 </html>
