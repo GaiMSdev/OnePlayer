@@ -1,0 +1,9 @@
+OnePlayer is a Safari extension for YouTube that keeps video playback tidy.
+
+- Sticky Picture-in-Picture — the video follows you as you scroll, so you can read comments and browse without losing sight of what's playing
+- Auto-Pause — only one YouTube tab plays at a time, the others pause automatically
+- PiP Button — a button on the video player to manually pop out any video to Picture-in-Picture
+
+If you keep too many YouTube tabs open, OnePlayer reduces the mess. It doesn't try to be a general browser tool — it just handles YouTube playback better.
+
+All features can be toggled on or off from the extension popup.

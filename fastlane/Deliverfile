@@ -1,0 +1,12 @@
+app_identifier "GaiMS.OnePlayer"
+price_tier 1
+primary_category "utilities"
+primary_first_sub_category "developer_tools"
+
+# Skjermbilder hentes fra fastlane/screenshots/en-US/
+# Legg .png-filer der med riktig navngiving:
+#   - MAC-skjermbilder: minimum 1280x800 eller 1440x900
+#   - Navnformat: 01_sticky_pip.png, 02_auto_pause.png, etc.
+
+submit_for_review false
+automatic_release false

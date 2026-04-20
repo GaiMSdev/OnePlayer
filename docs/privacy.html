@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnePlayer — Privacy Policy</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --bg: #ffffff;
+            --fg: #1d1d1f;
+            --muted: #6e6e73;
+            --accent: #0071e3;
+            --border: #d2d2d7;
+            --card: #f5f5f7;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1d1d1f;
+                --fg: #f5f5f7;
+                --muted: #a1a1a6;
+                --accent: #2997ff;
+                --border: #3a3a3c;
+                --card: #2c2c2e;
+            }
+        }
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+            color: var(--fg);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 17px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 64px 24px 96px;
+        }
+        header {
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 700;
+            margin: 0 0 8px;
+            letter-spacing: -0.02em;
+        }
+        .meta {
+            color: var(--muted);
+            font-size: 15px;
+        }
+        h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 40px 0 12px;
+            letter-spacing: -0.01em;
+        }
+        p { margin: 0 0 16px; }
+        ul {
+            padding-left: 20px;
+            margin: 0 0 16px;
+        }
+        li { margin-bottom: 8px; }
+        strong { font-weight: 600; }
+        .callout {
+            background: var(--card);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 24px 0;
+        }
+        .callout p:last-child { margin-bottom: 0; }
+        footer {
+            margin-top: 64px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 14px;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Privacy Policy</h1>
+            <div class="meta">OnePlayer for Safari · Last updated April 20, 2026</div>
+        </header>
+
+        <div class="callout">
+            <p><strong>Summary:</strong> OnePlayer does not collect, store, or transmit any user data. Everything stays on your Mac.</p>
+        </div>
+
+        <h2>What OnePlayer does</h2>
+        <p>OnePlayer is a Safari Web Extension for YouTube. It runs entirely in your browser and provides three features: automatic pause of background YouTube tabs, sticky Picture-in-Picture when you scroll past the player, and a manual PiP button on the YouTube video player.</p>
+
+        <h2>Data collection</h2>
+        <p>OnePlayer does not collect, store, or transmit any personal data, usage data, or content. No account is required. No information ever leaves your device through OnePlayer.</p>
+
+        <h2>Local storage</h2>
+        <p>OnePlayer uses Safari Extension Storage (<code>browser.storage.local</code>) to remember your preferences on your device only. The values stored are:</p>
+        <ul>
+            <li>Whether Auto-Pause is enabled</li>
+            <li>Whether Sticky Picture-in-Picture is enabled</li>
+            <li>Whether the manual PiP button is shown on the player</li>
+        </ul>
+        <p>These settings never leave your Mac and are not synced, uploaded, or shared.</p>
+
+        <h2>Tracking and analytics</h2>
+        <p>No analytics or tracking scripts are used. OnePlayer contains no third-party SDKs, no telemetry, and no advertising frameworks.</p>
+
+        <h2>Permissions</h2>
+        <p>OnePlayer requests the following Safari permissions strictly to provide its features:</p>
+        <ul>
+            <li><strong>Access to youtube.com</strong> — to detect the video player and control playback</li>
+            <li><strong>Tabs and scripting</strong> — to coordinate pausing across open YouTube tabs</li>
+            <li><strong>Storage</strong> — to save your preferences locally</li>
+        </ul>
+
+        <h2>Children's privacy</h2>
+        <p>OnePlayer is suitable for all ages and does not knowingly collect any information from anyone, including children under 13.</p>
+
+        <h2>Changes to this policy</h2>
+        <p>If this policy ever changes, the updated version will be posted at this URL with a new "Last updated" date.</p>
+
+        <h2>Contact</h2>
+        <p>Questions about privacy? See the <a href="support.html">Support page</a>.</p>
+
+        <footer>
+            &copy; 2026 OnePlayer
+        </footer>
+    </main>
+</body>
+</html>

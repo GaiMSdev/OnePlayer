@@ -1,0 +1,1 @@
+Initial release — Sticky PiP, Auto-Pause, and manual PiP button for YouTube in Safari.

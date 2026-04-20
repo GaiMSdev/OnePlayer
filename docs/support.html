@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnePlayer — Support</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --bg: #ffffff;
+            --fg: #1d1d1f;
+            --muted: #6e6e73;
+            --accent: #0071e3;
+            --border: #d2d2d7;
+            --card: #f5f5f7;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1d1d1f;
+                --fg: #f5f5f7;
+                --muted: #a1a1a6;
+                --accent: #2997ff;
+                --border: #3a3a3c;
+                --card: #2c2c2e;
+            }
+        }
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+            color: var(--fg);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 17px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 64px 24px 96px;
+        }
+        header {
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 700;
+            margin: 0 0 8px;
+            letter-spacing: -0.02em;
+        }
+        .meta {
+            color: var(--muted);
+            font-size: 15px;
+        }
+        h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 40px 0 12px;
+            letter-spacing: -0.01em;
+        }
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 24px 0 8px;
+        }
+        p { margin: 0 0 16px; }
+        ul, ol {
+            padding-left: 20px;
+            margin: 0 0 16px;
+        }
+        li { margin-bottom: 8px; }
+        strong { font-weight: 600; }
+        code {
+            background: var(--card);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-size: 0.9em;
+        }
+        .contact-grid {
+            display: grid;
+            gap: 12px;
+            margin: 16px 0 24px;
+        }
+        .contact-card {
+            background: var(--card);
+            padding: 16px 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+        .contact-card h3 { margin-top: 0; }
+        .contact-card p:last-child { margin-bottom: 0; }
+        footer {
+            margin-top: 64px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 14px;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        details {
+            background: var(--card);
+            border-radius: 10px;
+            padding: 12px 20px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+        }
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            padding: 4px 0;
+        }
+        details[open] summary { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Support</h1>
+            <div class="meta">OnePlayer for Safari · Help &amp; Feedback</div>
+        </header>
+
+        <p>Thanks for using OnePlayer. If something isn't working, or you have a suggestion, the fastest way to reach us is below.</p>
+
+        <h2>Contact</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>Email</h3>
+                <p><a href="mailto:support@oneplayer.app">support@oneplayer.app</a></p>
+                <p>We usually reply within 2 business days.</p>
+            </div>
+            <div class="contact-card">
+                <h3>GitHub Issues</h3>
+                <p><a href="https://github.com/GaiMSdev/OnePlayer/issues">Report a bug or request a feature</a></p>
+                <p>Public issue tracker — good for bug reports and feature requests.</p>
+            </div>
+        </div>
+
+        <h2>Getting started</h2>
+        <ol>
+            <li>Open <strong>Safari</strong> → <strong>Settings</strong> → <strong>Extensions</strong>.</li>
+            <li>Enable <strong>OnePlayer</strong>.</li>
+            <li>Click OnePlayer's icon in the Safari toolbar and allow access to <code>youtube.com</code>.</li>
+            <li>Visit any YouTube video — OnePlayer works automatically.</li>
+        </ol>
+
+        <h2>Frequently asked questions</h2>
+
+        <details>
+            <summary>Auto-Pause isn't pausing other tabs</summary>
+            <p>Make sure OnePlayer has access to <code>youtube.com</code> on every tab (Safari toolbar icon → <strong>Always Allow on Every Website</strong>). Reload any tabs that were open before you granted permission.</p>
+        </details>
+
+        <details>
+            <summary>Sticky Picture-in-Picture doesn't trigger when I scroll</summary>
+            <p>PiP activates when you scroll past roughly 75% of the player. Safari also requires a recent user interaction with the page before PiP can be entered — try clicking the video once and scrolling again. You can also use the manual PiP button on the player.</p>
+        </details>
+
+        <details>
+            <summary>I don't see the PiP button on the player</summary>
+            <p>Open the OnePlayer popup (toolbar icon) and make sure <strong>Show PiP button on player</strong> is enabled. The button appears in the top-right corner of the video on hover.</p>
+        </details>
+
+        <details>
+            <summary>How do I turn features off?</summary>
+            <p>Click the OnePlayer icon in the Safari toolbar. Each feature — Auto-Pause, Sticky PiP, and the PiP button — has its own toggle.</p>
+        </details>
+
+        <details>
+            <summary>Does OnePlayer work on anything other than YouTube?</summary>
+            <p>No. OnePlayer is YouTube-only by design and only runs on pages under <code>youtube.com</code>.</p>
+        </details>
+
+        <details>
+            <summary>Does OnePlayer collect any data?</summary>
+            <p>No. See the <a href="privacy.html">Privacy Policy</a> for details. Your settings are stored only on your Mac.</p>
+        </details>
+
+        <h2>When reporting a bug</h2>
+        <p>To help us fix it quickly, please include:</p>
+        <ul>
+            <li>macOS version and Safari version</li>
+            <li>OnePlayer version (visible on the App Store page)</li>
+            <li>A short description of what you did and what happened</li>
+            <li>A YouTube URL where the issue reproduces, if applicable</li>
+        </ul>
+
+        <footer>
+            &copy; 2026 OnePlayer · <a href="privacy.html">Privacy Policy</a>
+        </footer>
+    </main>
+</body>
+</html>
