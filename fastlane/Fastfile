@@ -1,0 +1,59 @@
+default_platform(:mac)
+
+# App Store Connect API-nøkkel (p8-filen hentes automatisk fra
+# ~/.appstoreconnect/private_keys/AuthKey_9PJ79GJ677.p8)
+API_KEY = app_store_connect_api_key(
+  key_id:        "9PJ79GJ677",
+  issuer_id:     "ec2486af-a2e0-466f-8d32-3c4acc72fac0",
+  key_filepath:  File.expand_path("~/.appstoreconnect/private_keys/AuthKey_9PJ79GJ677.p8"),
+  duration:      1200,
+  in_house:      false
+)
+
+platform :mac do
+
+  # -------------------------------------------------------
+  # release — bygg, arkiver, last opp bygg + metadata + bilder
+  # Bruk denne når du har en ny versjon klar til innsending.
+  # -------------------------------------------------------
+  lane :release do
+    build_mac_app(
+      scheme:           "OnePlayer",
+      configuration:    "Release",
+      export_method:    "app-store",
+      output_directory: "./build",
+      output_name:      "OnePlayer.pkg"
+    )
+
+    deliver(
+      api_key:              API_KEY,
+      pkg:                  "./build/OnePlayer.pkg",
+      metadata_path:        "./fastlane/metadata",
+      screenshots_path:     "./fastlane/screenshots",
+      submit_for_review:    false,
+      automatic_release:    false,
+      force:                true,          # hopp over HTML-forhåndsvisning
+      platform:             "osx",
+      precheck_include_in_app_purchases: false
+    )
+  end
+
+  # -------------------------------------------------------
+  # metadata — last opp kun metadata og skjermbilder, ingen bygg.
+  # Bruk denne for å oppdatere App Store-tekst og bilder uten ny versjon.
+  # -------------------------------------------------------
+  lane :metadata do
+    deliver(
+      api_key:              API_KEY,
+      metadata_path:        "./fastlane/metadata",
+      screenshots_path:     "./fastlane/screenshots",
+      skip_binary_upload:   true,
+      submit_for_review:    false,
+      automatic_release:    false,
+      force:                true,
+      platform:             "osx",
+      precheck_include_in_app_purchases: false
+    )
+  end
+
+end
